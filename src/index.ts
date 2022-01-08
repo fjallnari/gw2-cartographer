@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import path from "path/posix";
 import MapGenController from "./controllers/MapGenController";
+import TYRIA_MAPS from "./data/TYRIA_MAPS";
 const cloudinary = require('cloudinary').v2;
 
 dotenv.config();
@@ -16,15 +17,9 @@ cloudinary.config({
 const main = async () => {
   const app = express();
 
-  app.use(express.static('src/client/public'));
-
-  app.use('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client/public', 'index.html'));
-  });
-
-  app.get('/api/bmap/:id', async (req, res) => {
-    console.log(~ req.params.id);
-    const controller = new MapGenController(~ req.params.id, 'bmap-only');
+  app.get('/api/bmap/:name', async (req, res) => {
+    const mapID = TYRIA_MAPS.find(map => map.name === req.params.name)?.id ?? 0;
+    const controller = new MapGenController(mapID, 'bmap-only');
     await controller.generateMap()
       .then( (mapURL) => {
         res.send({
@@ -39,6 +34,16 @@ const main = async () => {
         })
       })
 
+  });
+
+  app.get('/api/maps', (req, res) => {
+    res.json(TYRIA_MAPS);
+  });
+
+  app.use(express.static('src/client/public'));
+
+  app.use('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'client/public', 'index.html'));
   });
 
   app.listen(4000, () => {

@@ -1,30 +1,51 @@
 <script lang="ts">
-	let mapID: number;
-	let mapURL: string;
+	import Autocomplete from "@smui-extra/autocomplete";
+	import Button, { Label } from "@smui/button";
+	let gw2mapName: string;
+	let gw2mapURL: string;
+	let gw2mapNames: any[];
+
+	const getMaps = async () => {
+		try {
+			const returnValue = await fetch(`/api/maps`);
+			const response = await returnValue.json();
+			gw2mapNames = response.map( gw2map => gw2map.name);
+		} catch (err) {
+			console.error(err);
+		}
+	}
 
 	async function renderMap() {
+		if (!gw2mapName) {return};
 		try {
-			// console.log(mapID);
-			const returnValue = await fetch(`/api/bmap/${mapID}`);
-			console.log(returnValue);
-			//const response = await returnValue.json();
-			mapURL = "Unga"//returnValue.data.url;
+			const returnValue = await fetch(`/api/bmap/${gw2mapName}`);
+			const response = await returnValue.json();
+			gw2mapURL = response.data[0].mapURL;
 
 		} catch (err) {
 			console.error(err);
 		}
 	}
+	$: getMaps();
 </script>
 
 <main>
 	<h1>GW2 Map Renderer</h1>
 	<div class="search-block">
-		<input type="text" placeholder="Render Gw2 BMap by ID" bind:value={mapID} />
-		<button on:click={renderMap}>Render BMap</button>
+		<Autocomplete
+		  options={gw2mapNames}
+		  bind:value={gw2mapName}
+		  label="Choose Map"
+		/>
+		<pre class="status">Selected: {gw2mapName || ''}</pre>
+		<Button on:click={renderMap}>
+			<Label>Render BMap</Label>
+		</Button>
 	</div>
+
 	<div class="rendered-map">
-		{#if mapURL}
-		  <div>{mapURL}</div>
+		{#if gw2mapURL}
+			<img src={gw2mapURL} alt="base map" style="width:500px">
 		{:else}No map generated so far!{/if}
 	  </div>
 	<!--<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p> !-->
@@ -39,7 +60,7 @@
 	}
 
 	h1 {
-		color: #ff3e00;
+		color: #386641;
 		text-transform: uppercase;
 		font-size: 4em;
 		font-weight: 100;
@@ -49,5 +70,9 @@
 		main {
 			max-width: none;
 		}
+	}
+	
+	:global(body) {
+		background-color: #FCF7F8;
 	}
 </style>
