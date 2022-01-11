@@ -1,24 +1,25 @@
 <script lang="ts">
 	import Router from "svelte-spa-router";
-
-
 	import Home from "./routes/Home.svelte";
 	import Maps from "./routes/Maps.svelte";
 	import SpotterBot from "./routes/SpotterBot.svelte";
 	import NotFound from "./routes/NotFound.svelte";
+	import About from "./routes/About.svelte";
 	
 	const routes = {
 		"/": Home,
+		"/about": About,
 		"/maps": Maps,
 		"/spotter-bot": SpotterBot,
 		"*": NotFound
 	}
+	
 </script>
 
 <main>
 	<nav>
 		<ul class="nav-bar">
-			<img id="logo" src="static/logo-transparent-bg.png" alt="spotter logo">
+			<a href="/?#" id="logo"><img style="max-width: 115px" src="static/logo-transparent-bg.png" alt="spotter logo"></a>
 			<li><form><button class="nav-button" formaction="/#">Home</button></form></li>
 			<li><form><button class="nav-button" formaction="/#/about">About</button></form></li>
 			<li><form><button class="nav-button" formaction="/#/spotter-bot">SpotterBot</button></form></li>
@@ -103,7 +104,6 @@
 	}
 
 	#logo {
-		max-width: 115px;
 		margin-right: auto;
 		margin-left: -2%;
 	}

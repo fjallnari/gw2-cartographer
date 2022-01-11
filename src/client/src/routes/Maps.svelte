@@ -13,7 +13,6 @@
 
 	const renderModes = [{value: "bmap", name: "Only base map"}, {value: "imap", name: "BMap + icons"}, {value: "fmap", name: "BMap + icons + labels"}];	
 	
-	
     const addOutline = (id: string) => {
         const mapImage = document.getElementById(id);
         mapImage.style.outline = `solid #C1B9A8`;
@@ -22,7 +21,6 @@
 	}
 
 	const getRandomLoadingMessage = () => {
-
 		return LOADING_MESSAGES[Math.floor(Math.random() * LOADING_MESSAGES.length)];
 	}
 
@@ -73,7 +71,7 @@
     </div>
 
     <Button on:click={renderMap} variant="outlined">
-        <Label>Render {renderMode}</Label>
+        <Label>Render map</Label>
     </Button>
 </div>
 
