@@ -52,8 +52,8 @@
 			<img id="logo" src="static/logo-transparent-bg.png" alt="spotter logo">
 			<li><button class="nav-button" on:click={() => ""}>About</button></li>
 			<li><button class="nav-button" on:click={() => ""}>SpotterBot</button></li>
-			<li><button class="nav-button" on:click={() => ""}>Some Stuff</button></li>
 			<li><button class="nav-button" on:click={() => ""}>GW2 Hi-Res Maps</button></li>
+			<li><button class="nav-button" on:click={() => ""}>Some Stuff</button></li>
 		</ul>
 	</nav>
 	<h1 style="padding-top:15%">GW2 Hi-Res Maps</h1>
@@ -123,23 +123,24 @@
 		display: inline-flex;
 		align-items: center;
 		justify-content: center;
-		box-sizing: border-box;
+		box-sizing: content-box;
 		min-width: 64px;
-		border: none;
 		outline: none;		
 		line-height: inherit;
 		-webkit-appearance: none;
 		vertical-align: middle;
-		background: transparent;
 		
 		font-family: "Palanquir", sans-serif;
 		letter-spacing: 1.25px;
 		text-transform: uppercase;
 		color: #FCF7F8;
+		background: transparent;
 		font-size: 1em;
 		cursor: pointer;
+		border: none;
 
 		padding-bottom: 5px;
+		padding-top: 5px;
 	}
 
 	.nav-button:after {
@@ -147,7 +148,7 @@
 		position: absolute;
 		width: 100%;
 		transform: scaleX(0);
-		height: 2px;
+		height: 1px;
 		bottom: 0;
 		left: 0;
 		background-color: #87BCDE;
@@ -157,7 +158,12 @@
 
 	.nav-button:hover:after {
 		transform: scaleX(1);
+		right: 5px;
 		transform-origin: bottom left;
+	}
+
+	.nav-button:active {
+		color: #87BCDE;
 	}
 
 	.info-text {
