@@ -59,7 +59,7 @@ export default class MapGenController {
 
     public async generateMap() {
         // console.log(`Generating ${this.mode}`);
-        if (this.mode === "bmap-only"){
+        if (this.mode === "bmap"){
             return await this.createAndUploadBmap();
         }
 

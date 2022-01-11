@@ -20,7 +20,7 @@ const main = async () => {
 
   app.get('/api/bmap/:name', async (req, res) => {
     const mapID = TYRIA_MAPS.find(map => map.name === req.params.name)?.id ?? 0;
-    const controller = new MapGenController(mapID, 'bmap-only');
+    const controller = new MapGenController(mapID, 'bmap');
     await controller.generateMap()
       .then( (mapURL) => {
         res.send({
