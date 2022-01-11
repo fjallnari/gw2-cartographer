@@ -4,6 +4,7 @@ import path from "path/posix";
 import MapGenController from "./controllers/MapGenController";
 import TYRIA_MAPS from "./data/TYRIA_MAPS";
 const cloudinary = require('cloudinary').v2;
+import cors from 'cors';
 
 dotenv.config();
 cloudinary.config({

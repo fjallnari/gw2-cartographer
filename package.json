@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start-prod": "yarn build && node dist/",
-    "start": "ts-node-dev src/index.ts"
+    "start-server-prod": "yarn build && node dist/",
+    "start-server-dev": "ts-node-dev src/index.ts",
+    "run-dev": "cd src/client && yarn build && cd ../.. && yarn start-server-dev"
   },
   "repository": {
     "type": "git",
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/nevermore-org/spotter-web#readme",
   "devDependencies": {
+    "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
     "@types/node": "^16.11.12",
     "@types/streamifier": "^0.1.0",
@@ -30,6 +32,7 @@
     "axios": "^0.24.0",
     "canvas": "^2.8.0",
     "cloudinary": "^1.27.1",
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "image-size": "^1.0.0",
