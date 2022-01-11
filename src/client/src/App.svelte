@@ -50,10 +50,10 @@
 	<nav>
 		<ul class="nav-bar">
 			<img id="logo" src="static/logo-transparent-bg.png" alt="spotter logo">
-			<li><Button on:click={() => ""}><Label>About</Label></Button></li>
-			<li><Button on:click={() => ""}><Label>SpotterBot</Label></Button></li>
-			<li><Button on:click={() => ""}><Label>Some Stuff</Label></Button></li>
-			<li><Button on:click={() => ""}><Label>GW2 Hi-Res Maps</Label></Button></li>
+			<li><button class="nav-button" on:click={() => ""}>About</button></li>
+			<li><button class="nav-button" on:click={() => ""}>SpotterBot</button></li>
+			<li><button class="nav-button" on:click={() => ""}>Some Stuff</button></li>
+			<li><button class="nav-button" on:click={() => ""}>GW2 Hi-Res Maps</button></li>
 		</ul>
 	</nav>
 	<h1 style="padding-top:15%">GW2 Hi-Res Maps</h1>
@@ -116,6 +116,48 @@
 		align-items: center;
 		position: sticky;
 		--mdc-text-button-label-text-color: #FCF7F8;
+	}
+
+	.nav-button {
+		position: relative;
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		box-sizing: border-box;
+		min-width: 64px;
+		border: none;
+		outline: none;		
+		line-height: inherit;
+		-webkit-appearance: none;
+		vertical-align: middle;
+		background: transparent;
+		
+		font-family: "Palanquir", sans-serif;
+		letter-spacing: 1.25px;
+		text-transform: uppercase;
+		color: #FCF7F8;
+		font-size: 1em;
+		cursor: pointer;
+
+		padding-bottom: 5px;
+	}
+
+	.nav-button:after {
+		content: '';
+		position: absolute;
+		width: 100%;
+		transform: scaleX(0);
+		height: 2px;
+		bottom: 0;
+		left: 0;
+		background-color: #87BCDE;
+		transform-origin: bottom right;
+		transition: transform 0.25s ease-out;
+	}
+
+	.nav-button:hover:after {
+		transform: scaleX(1);
+		transform-origin: bottom left;
 	}
 
 	.info-text {
