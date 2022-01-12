@@ -5,7 +5,7 @@ import MapInfo from "../interfaces/MapInfo";
 import { mapDimensionsFromPoints } from "../util/mapUtil";
 import { GW_API_URL } from "../data/GW_API_URL";
 
-export default class gw2MapGen {
+export default class BMapGen {
     private mapID: number;
     mapInfo: MapInfo;
     mapDims: MapDimensions;

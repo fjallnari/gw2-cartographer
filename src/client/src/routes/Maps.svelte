@@ -9,10 +9,12 @@
 	let gw2mapURL: string;	
 	let gw2mapNames: any[];
 	let inProgress: boolean = false;
-	let renderMode: string = "bmap";
+	let value = 'bmap';
+	let progressError = "No map generated so far!";
 
-	const renderModes = [{value: "bmap", name: "Only base map"}, {value: "imap", name: "BMap + icons"}, {value: "fmap", name: "BMap + icons + labels"}];	
-	
+	const genModes = [{value: "bmap", name: "Only base map"}, {value: "imap", name: "BMap + icons"}, {value: "fmap", name: "BMap + icons + labels"}];
+
+
     const addOutline = (id: string) => {
         const mapImage = document.getElementById(id);
         mapImage.style.outline = `solid #C1B9A8`;
@@ -38,12 +40,13 @@
 		if (!gw2mapName) {return};
 		inProgress = true;
 		try {
-			const returnValue = await fetch(`/api/bmap/${gw2mapName}`);
+			const returnValue = await fetch(`/api/map-gen/?mode=${value}&name=${gw2mapName}`);
 			const response = await returnValue.json();
 			gw2mapURL = response.data[0].mapURL;
 
 		} catch (err) {
-			console.error(err);
+			progressError = `Couldn't generate the ${value} of ${gw2mapName}`;
+			gw2mapURL = undefined;
 		}
 		inProgress = false;
 	}
@@ -60,13 +63,14 @@
         style="padding: 10px"
     />
 
-    <div class="render-mode-select" style="justify-content: flex-end;">
+    <div class="columns margins" style="justify-content: flex-end;">
         <div style="padding: 10px">
-            <Select bind:renderMode label="Render-mode">
-            {#each renderModes as mode}
-                <Option value={mode.value}>{mode.name}</Option>
-            {/each}
+            <Select bind:value label="Render-mode">
+				{#each genModes as mode}
+					<Option value={mode.value}>{mode.name}</Option>
+				{/each}
             </Select>
+			<pre class="status"> Selected: {value}</pre>
         </div>
     </div>
 
@@ -83,7 +87,7 @@
             <div id="progress-circle"><CircularProgress style="height: 48px; width: 48px;" indeterminate /></div>
             <div id="progress-text" style="padding: 10px">{getRandomLoadingMessage()}</div>
         </div>
-    {:else}No map generated so far!{/if}
+    {:else}<div style="color: #BC4749">{progressError}</div>{/if}
 </div>
 
 
