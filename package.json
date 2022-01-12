@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build-server": "tsc",
-    "build-client": "cd src/client && yarn build && cd ../..",
+    "build-client": "cd src/client && yarn build-prod && cd ../..",
     "start-server-dev": "ts-node-dev src/index.ts",
     "run-dev": "yarn build-client && yarn start-server-dev",
-    "build-prod": "yarn build-client && yarn build-server",
+    "build-prod": "yarn install --frozen-lockfile && yarn build-client && yarn build-server",
     "start-prod": "node dist/"
   },
   "repository": {

@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
-    "build-with-css": "yarn prepare-theme && rollup -c",
+    "build-with-css": "yarn prepare-theme && yarn build",
+    "build-prod": "yarn install --frozen-lockfile && yarn build-with-css",
     "dev": "rollup -c -w",
     "start": "sirv public --no-clear",
     "check": "svelte-check --tsconfig ./tsconfig.json",
