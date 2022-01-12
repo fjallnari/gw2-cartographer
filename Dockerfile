@@ -4,10 +4,10 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci
+RUN yarn install --frozen-lockfile
 
 COPY . .
 
-EXPOSE 80
+EXPOSE 4000
 
-CMD npm run start-prod
+CMD yarn run-prod

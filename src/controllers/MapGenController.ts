@@ -31,7 +31,7 @@ export default class MapGenController {
     }
 
     private async uploadMapToCloud(buffer: Buffer): Promise<UploadApiResponse> {
-        console.log("Uploading to cloudinary");
+        // console.log("Uploading to cloudinary...");
         return new Promise((resolve, reject) => {
             const stream = cloudinary.uploader.upload_stream(
                 {
