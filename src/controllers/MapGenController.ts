@@ -2,10 +2,12 @@ import { UploadApiResponse } from "cloudinary";
 import streamifier from "streamifier";
 import AssetInfo from "../interfaces/AssetInfo";
 import BMapGen from "../services/bmapGen";
+import MapFluffAdder from "../services/mapFluffAdder";
 let cloudinary = require("cloudinary").v2;
 
 export default class MapGenController {
     private bmapGen: BMapGen;
+    private mapFluffAdder: MapFluffAdder;
     private public_id: string;
     private mapID: number;
     private mode: string;
@@ -13,6 +15,7 @@ export default class MapGenController {
 
     constructor(id: number, mode: string) {
         this.bmapGen = new BMapGen(id);
+        this.mapFluffAdder = new MapFluffAdder(id);
         this.mode = mode;
         this.mapID = id;
         this.public_id = `gw2-maps/${mode}/${id}`;
@@ -41,6 +44,7 @@ export default class MapGenController {
             streamifier.createReadStream(buffer).pipe(stream);
         })        
     }
+    // TODO: Refactor those two functions to be DRY
 
     private async getBmapUrl() {
         // checks first if the image exists on our cloud
@@ -52,10 +56,20 @@ export default class MapGenController {
         // generate and upload it if it doesn't
         const canvas = await this.bmapGen.createBmap();
         const buffer = canvas.toBuffer('image/jpeg');
-        console.log("Successful generation!");
-
         const uploadResponse = await this.uploadMapToCloud(buffer);
-        console.log("Successful upload!");
+
+        return uploadResponse.secure_url;
+    }
+
+    private async getModifiedMapUrl(bmapURL: string) {
+        const assetInfo = await this.getAssetInfoByPublicID();
+        if (assetInfo){
+            return assetInfo.secure_url;
+        }
+
+        const canvas = await this.mapFluffAdder.addFluffToMap(bmapURL, this.mode === 'fmap');
+        const buffer = canvas.toBuffer('image/jpeg');
+        const uploadResponse = await this.uploadMapToCloud(buffer);
 
         return uploadResponse.secure_url;
     }
@@ -66,13 +80,12 @@ export default class MapGenController {
 
         const bmapUrl = await this.getBmapUrl();
 
-        switch (this.mode) {
-            case "bmap":
-                return bmapUrl;
-            case "imap":
-                return "---"
-            case "fmap":
-                return "---"
+        if (this.mode === "bmap") {
+            return bmapUrl;
+        }
+
+        else if (this.mode === "imap" || this.mode === "fmap") {
+            return await this.getModifiedMapUrl(bmapUrl);
         }
 
         return "---";  
