@@ -1,6 +1,6 @@
 import express from "express";
 import dotenv from "dotenv";
-import path from "path/posix";
+import path from 'path';
 import MapGenController from "./controllers/MapGenController";
 import TYRIA_MAPS from "./data/TYRIA_MAPS";
 const cloudinary = require('cloudinary').v2;
