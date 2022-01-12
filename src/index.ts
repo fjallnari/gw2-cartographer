@@ -4,7 +4,6 @@ import path from "path/posix";
 import MapGenController from "./controllers/MapGenController";
 import TYRIA_MAPS from "./data/TYRIA_MAPS";
 const cloudinary = require('cloudinary').v2;
-import cors from 'cors';
 
 dotenv.config();
 cloudinary.config({
@@ -18,14 +17,19 @@ cloudinary.config({
 const main = async () => {
   const app = express();
 
-  app.get('/api/bmap/:name', async (req, res) => {
-    const mapID = TYRIA_MAPS.find(map => map.name === req.params.name)?.id ?? 0;
-    const controller = new MapGenController(mapID, 'bmap');
+  app.get('/api/map-gen/', async (req, res) => {
+    const mapName = req.query.name;
+    const genMode = <string> req.query.mode;
+
+    const mapID = TYRIA_MAPS.find(map => map.name === mapName)?.id ?? 0;
+    const controller = new MapGenController(mapID, genMode);
+
     await controller.generateMap()
       .then( (mapURL) => {
+        const wasSuccess = mapURL !== '---';
         res.send({
-          success: true,
-          data: [{mapURL: mapURL}]
+          success: wasSuccess,
+          data: wasSuccess ? [{mapURL: mapURL}] : []
         });
       })
       .catch((err) => {

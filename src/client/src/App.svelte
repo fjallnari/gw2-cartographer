@@ -88,7 +88,7 @@
 		height: 1px;
 		bottom: 0;
 		left: 0;
-		background-color: #87BCDE;
+		background-color: var(--main-accent-color);
 		transform-origin: bottom right;
 		transition: transform 0.25s ease-out;
 	}
@@ -100,7 +100,7 @@
 	}
 
 	.nav-button:active {
-		color: #87BCDE;
+		color: var(--main-accent-color);
 	}
 
 	#logo {
