@@ -4,12 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build-server": "tsc",
     "build-client": "cd src/client && yarn build && cd ../..",
-    "start-server-prod": "yarn build && node dist/",
     "start-server-dev": "ts-node-dev src/index.ts",
     "run-dev": "yarn build-client && yarn start-server-dev",
-    "run-prod": "yarn build-client && yarn start-server-prod"
+    "build-prod": "yarn build-client && yarn build-server",
+    "start-prod": "node dist/"
   },
   "repository": {
     "type": "git",
