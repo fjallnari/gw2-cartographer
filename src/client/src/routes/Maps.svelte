@@ -22,7 +22,7 @@
         mapImage.style.borderRadius = "0.5rem";
 	}
 
-	const getRandomLoadingMessage = () => {
+	const randomizeLoadingMessage = () => {
 		return LOADING_MESSAGES[Math.floor(Math.random() * LOADING_MESSAGES.length)];
 	}
 
@@ -85,7 +85,7 @@
     {:else if inProgress}
         <div id="progress">
             <div id="progress-circle"><CircularProgress style="height: 48px; width: 48px;" indeterminate /></div>
-            <div id="progress-text" style="padding: 10px">{getRandomLoadingMessage()}</div>
+            <div id="progress-text" style="padding: 10px">{randomizeLoadingMessage()}</div>
         </div>
     {:else}<div style="color: #BC4749">{progressError}</div>{/if}
 </div>

@@ -1,13 +1,15 @@
 {
-  "name": "spotter-map-tool",
+  "name": "spotter-web",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "build": "tsc",
+    "build-client": "cd src/client && yarn build && cd ../..",
     "start-server-prod": "yarn build && node dist/",
     "start-server-dev": "ts-node-dev src/index.ts",
-    "run-dev": "cd src/client && yarn build && cd ../.. && yarn start-server-dev"
+    "run-dev": "yarn build-client && yarn start-server-dev",
+    "run-prod": "yarn build-client && yarn start-server-prod"
   },
   "repository": {
     "type": "git",

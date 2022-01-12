@@ -4,7 +4,7 @@ x-node-env: &node-env
     image: node:16.8.0
     user: node
     ports:
-        - "4000:80"
+        - "4000:4000"
     volumes:
         - .:/app
         - node-16:/home/node/.npm
@@ -23,8 +23,8 @@ services:
         command: |
             bash -c "
                 sleep 3 &&
-                npm ci &&
-                npm start
+                yarn install --frozen-lockfile &&
+                yarn run-prod
             "
 
 networks:
