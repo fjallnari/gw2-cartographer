@@ -57,6 +57,5 @@ const main = async () => {
   });
 
 };
- // test comment
 
 main();
