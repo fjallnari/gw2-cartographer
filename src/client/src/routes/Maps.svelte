@@ -22,6 +22,14 @@
         mapImage.style.borderRadius = "0.5rem";
 	}
 
+	const fadeAwayTitle = () => {
+		const titleElement = document.getElementById("title");
+		if (titleElement === null) {return};
+
+		setTimeout(() => titleElement.remove(), 550);
+		titleElement.style.opacity = titleElement.style.padding = titleElement.style.fontSize = "0";
+	}
+
 	const randomizeLoadingMessage = () => {
 		return LOADING_MESSAGES[Math.floor(Math.random() * LOADING_MESSAGES.length)];
 	}
@@ -49,12 +57,15 @@
 			gw2mapURL = undefined;
 		}
 		inProgress = false;
+		fadeAwayTitle();
 	}
 	$: getMaps();
 
 </script>
+<span>
+	<h1 id="title">GW2 Hi-Res Maps</h1>
+</span>
 
-<h1>GW2 Hi-Res Maps</h1>
 <div id="search-block">
     <Autocomplete
         options={gw2mapNames}
@@ -95,9 +106,15 @@
 		font-family: "Palanquir", sans-serif;
 	}
 
+	#title {
+		transition: opacity 0.3s ease-in-out;
+		transition: padding 0.3s ease-in-out;
+		transition: font-size 0.5s ease-in-out;
+	}
+
     #rendered-map {
 		max-width: 50%;
-		max-height: 50%;
+		max-height: 40em;
 	}
 
 	#search-block {
