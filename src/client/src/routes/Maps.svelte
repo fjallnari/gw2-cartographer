@@ -107,9 +107,7 @@
 	}
 
 	#title {
-		transition: opacity 0.3s ease-in-out;
-		transition: padding 0.3s ease-in-out;
-		transition: font-size 0.5s ease-in-out;
+		transition: all 0.55s ease-in-out;
 	}
 
     #rendered-map {
