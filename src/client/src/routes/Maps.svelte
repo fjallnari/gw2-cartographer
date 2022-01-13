@@ -70,7 +70,6 @@
 					<Option value={mode.value}>{mode.name}</Option>
 				{/each}
             </Select>
-			<pre class="status"> Selected: {value}</pre>
         </div>
     </div>
 
