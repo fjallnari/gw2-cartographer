@@ -38,7 +38,7 @@
 		try {
 			const returnValue = await fetch(`/api/maps`);
 			const response = await returnValue.json();
-			gw2mapNames = response.map( gw2map => gw2map.name);
+			gw2mapNames = response.map( gw2map => gw2map.name).sort();
 		} catch (err) {
 			console.error(err);
 		}
