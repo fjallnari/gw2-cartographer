@@ -11,6 +11,7 @@
 	let inProgress: boolean = false;
 	let value = 'bmap';
 	let progressError = "No map generated so far!";
+	let searchBlockMaxHeight = 25;
 
 	const genModes = [{value: "bmap", name: "Only base map"}, {value: "imap", name: "BMap + icons"}, {value: "fmap", name: "BMap + icons + labels"}];
 
@@ -28,6 +29,7 @@
 
 		setTimeout(() => titleElement.remove(), 550);
 		titleElement.style.opacity = titleElement.style.padding = titleElement.style.fontSize = "0";
+		searchBlockMaxHeight = 45;
 	}
 
 	const randomizeLoadingMessage = () => {
@@ -38,7 +40,7 @@
 		try {
 			const returnValue = await fetch(`/api/maps`);
 			const response = await returnValue.json();
-			gw2mapNames = response.map( gw2map => gw2map.name);
+			gw2mapNames = response.map( gw2map => gw2map.name).sort();
 		} catch (err) {
 			console.error(err);
 		}
@@ -66,7 +68,7 @@
 	<h1 id="title">GW2 Hi-Res Maps</h1>
 </span>
 
-<div id="search-block">
+<div id="search-block" style="--mdc-menu-max-height: {searchBlockMaxHeight}em">
     <Autocomplete
         options={gw2mapNames}
         bind:value={gw2mapName}
