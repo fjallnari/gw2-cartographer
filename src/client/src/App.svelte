@@ -5,12 +5,16 @@
 	import SpotterBot from "./routes/SpotterBot.svelte";
 	import NotFound from "./routes/NotFound.svelte";
 	import About from "./routes/About.svelte";
+	import Login from "./routes/Account.svelte";
+import Dashboard from "./routes/Dashboard.svelte";
 	
 	const routes = {
 		"/": Home,
 		"/about": About,
 		"/maps": Maps,
 		"/spotter-bot": SpotterBot,
+		"/account": Login,
+		"/dashboard": Dashboard,
 		"*": NotFound
 	}
 	
@@ -22,8 +26,10 @@
 			<a href="/?#" id="logo"><img style="max-width: 115px" src="static/logo-transparent-bg.png" alt="spotter logo"></a>
 			<li><form><button class="nav-button" formaction="/#">Home</button></form></li>
 			<li><form><button class="nav-button" formaction="/#/about">About</button></form></li>
-			<li><form><button class="nav-button" formaction="/#/spotter-bot">SpotterBot</button></form></li>
+			<li><form><button class="nav-button" formaction="/#/spotter-bot">Spotter-Bot</button></form></li>
 			<li><form><button class="nav-button" formaction="/#/maps">GW2 Hi-Res Maps</button></form></li>
+			<li><form><button class="nav-button" formaction="/#/dashboard">Dashboard</button></form></li>
+			<li><form><button class="nav-button" formaction="/#/account">Account</button></form></li>
 		</ul>
 	</nav>
 	<Router {routes}/>
