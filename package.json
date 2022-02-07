@@ -38,6 +38,7 @@
     "dotenv": "^10.0.0",
     "express": "^4.17.2",
     "image-size": "^1.0.0",
+    "mongodb": "^4.3.1",
     "streamifier": "^0.1.1"
   }
 }
