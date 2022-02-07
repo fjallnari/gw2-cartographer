@@ -1,5 +1,6 @@
 import { Canvas, createCanvas, Image, loadImage, NodeCanvasRenderingContext2D } from "canvas";
 import { MAP_DETAILS } from "../data/MAP_DETAILS";
+import TYRIA_MAPS from "../data/TYRIA_MAPS";
 import FullMapInfo from "../interfaces/FullMapInfo";
 import { MapDimensions } from "../interfaces/MapDimensions";
 import { mapDimensionsFromPoints, translatePointArray } from "../util/mapUtil";
@@ -22,6 +23,9 @@ export default class MapFluffAdder {
         this.mapDimensions = {upper_left: {x: 0, y: 0}, lower_right: {x: 0, y: 0}, width: 0, height: 0};
 
         this.map = MAP_DETAILS[mapID];
+        console.log(Object.keys(MAP_DETAILS));
+        console.log(TYRIA_MAPS.map( mapInfo => mapInfo.id));
+
     }
 
     /**
@@ -44,7 +48,7 @@ export default class MapFluffAdder {
         this.context.font = this.fontStyles[fontStyle];
         this.context.textAlign = 'center';
         this.context.strokeStyle = 'black';
-        this.context.lineWidth = 4;
+        this.context.lineWidth = 2;
         this.context.strokeText(text, point.x, point.y);
         this.context.fillStyle = 'white'; // #DBB975
         this.context.fillText(text, point.x, point.y);
