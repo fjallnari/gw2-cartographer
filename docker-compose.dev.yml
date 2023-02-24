@@ -1,0 +1,50 @@
+version: "3.8"
+
+services:
+    server:
+        container_name: cartographer-server
+        tty: true
+        image: node:16.8.0
+        user: node
+        ports:
+            - "4000:4000"
+        volumes:
+            - .:/app
+            - node-16:/home/node/.npm
+        working_dir: "/app"
+        environment:
+            TZ: "Europe/Prague"
+        command: |
+            bash -c "
+                sleep 3 &&
+                yarn install --frozen-lockfile &&
+                yarn run-stack-dev
+            "
+    client:
+        build: 
+            context: ./src/client
+            dockerfile: dev.Dockerfile
+        user: node
+        ports: 
+            - "8080:8080"
+            - "35729:35729"
+        container_name: cartographer-client
+        volumes:
+            - .:/app
+        restart: always
+        tty: true
+        command: |
+            bash -c "
+                sleep 3 &&
+                cd src/client
+                yarn install --frozen-lockfile &&
+                yarn dev
+            "
+
+networks:
+    default:
+        driver: bridge
+
+volumes:
+    node-16:
+        external: true
