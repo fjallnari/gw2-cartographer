@@ -6,10 +6,11 @@
   "scripts": {
     "build-server": "tsc",
     "build-client": "cd src/client && yarn build-prod && cd ../..",
-    "start-server-dev": "ts-node-dev src/index.ts",
-    "run-dev": "yarn build-client && yarn start-server-dev",
+    "server-dev": "ts-node-dev src/index.ts",
+    "run-stack-dev": "yarn build-client && yarn server-dev",
     "build-prod": "yarn install --frozen-lockfile && yarn build-client && yarn build-server",
-    "start-prod": "node dist/"
+    "start-prod": "node dist/",
+    "run-prod": "yarn build-prod && yarn start-prod"
   },
   "repository": {
     "type": "git",
