@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import path from 'path';
 import MapGenController from "./controllers/MapGenController";
 import TYRIA_MAPS from "./data/TYRIA_MAPS";
+import cors from "cors";
 const cloudinary = require('cloudinary').v2;
 
 dotenv.config();
@@ -17,6 +18,10 @@ const port = process.env.PORT || 4000;
 
 const main = async () => {
   const app = express();
+
+  app.use(cors({
+    origin: 'http://localhost:5173'
+  }));
 
   app.get('/api/map-gen/', async (req, res) => {
     const mapName = req.query.name;
