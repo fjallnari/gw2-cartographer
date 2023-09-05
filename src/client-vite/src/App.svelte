@@ -1,5 +1,6 @@
 <script lang="ts">
     import type TyriaMap from "./interfaces/TyriaMap";
+    import LoadingWheel from "./lib/LoadingWheel.svelte";
     import SimpleSelect from "./lib/SimpleSelect.svelte";
 
     let mapToRender: TyriaMap;
@@ -57,18 +58,18 @@
 
 </script>
 
-<main class="flex flex-row flex-wrap justify-evenly items-center w-11/12 h-full p-6 m-auto">
-    <div class="flex flex-col justify-center items-left w-full md:w-1/5 h-2/3 gap-4">
-        <h1 class="text-2xl">GW2 Cartographer</h1>
-        <p>Generates high-res gw2 maps from the official API tiles.</p>
+<main class="flex flex-row flex-wrap lg:flex-nowrap justify-evenly items-center w-11/12 h-full p-6 m-auto text-white">
+    <div class="flex flex-col justify-center items-left w-full md:w-1/3 lg:w-1/5 h-fit px-8 py-4 gap-4 bg-abyss-900 bg-opacity-75 backdrop-blur-md border-solid border-b-2 border-goldenrod">
+        <h1 class="text-4xl font-homenaje">GW2 Cartographer</h1>
+        <p class="italic text-goldenrod">Generates high-res gw2 maps from the official API tiles.</p>
 
-        <div class="flex flex-row justify-center items-center gap-4">
-            <h2 class="font-semibold">MODE:</h2>
+        <div class="flex flex-row justify-between items-center gap-4">
+            <h2 class="font-semibold font-exo text-lg">Mode:</h2>
             <select bind:value={genMode}
-                class="block w-full p-2.5
+                class="block w-48 p-2.5
                 text-egshell text-sm border-b-abyss-900 border-solid border-b-2
-                rounded-t bg-abyss-800 shadow backdrop-blur-md
-                focus:ring-blue-500 focus:border-goldenrod focus:outline-none"
+                 bg-abyss-800 shadow backdrop-blur-md
+                focus:border-goldenrod focus:outline-none font-exo"
             >
                 {#each genModes.sort() as option}
                     <option value={option}>{option.name}</option>
@@ -78,17 +79,17 @@
         
         {#if genMode.info}
             <div class="flex flex-col justify-center items-left gap-2">
-                <p class="text-xs text-egshell italic">{genMode.info}</p>
+                <p class="text-sm text-egshell italic">{genMode.info}</p>
             </div>
         {/if}
 
-        <div class="flex flex-row justify-center items-center gap-4">
-            <h2 class="font-semibold">MAP:</h2>
+        <div class="flex flex-row justify-between items-center gap-4">
+            <h2 class="font-semibold font-exo text-lg">Map:</h2>
             <select bind:value={mapToRender}
-                class="block w-full p-2.5
+                class="block w-48 p-2.5
                 text-egshell text-sm border-b-abyss-900 border-solid border-b-2
-                rounded-t bg-abyss-800 shadow backdrop-blur-md
-                focus:ring-blue-500 focus:border-goldenrod focus:outline-none"
+                 bg-abyss-800 shadow backdrop-blur-md
+                focus:border-goldenrod focus:outline-none font-exo"
             >
                 {#await getMaps() then maps}
                     {#if !maps || maps.length === 0}
@@ -101,20 +102,23 @@
                 {/await}
             </select>
         </div>
-        <button class="" on:click={() => renderMap()}>
+        <button class="p-2.5 w-1/2 self-center mt-4 mb-2
+        text-egshell text-sm border-b-abyss-900 border-solid border-b-2
+        bg-abyss-800 shadow backdrop-blur-md
+        active:bg-abyss-700 focus:outline-none font-exo" on:click={() => renderMap()}>
             Render map
         </button>
         <!-- <div class="flex flex-col justify-center items-left gap-2">
             <p class="text-xs text-egshell italic py-4">You can download the map by right-clicking and "Save image as..."</p>
         </div> -->
     </div>
-    <div class="flex h-full justify-start items-center">
+    <div class="flex justify-start items-center">
         {#if renderedMapURL && !inProgress}
-            <img class="object-scale-down max-w-full max-h-[92vh] m-auto" src={renderedMapURL} alt="base map">
+            <img  class="object-scale-down max-w-full max-h-[92vh] m-auto p-8 " src={renderedMapURL} alt="base map">
         {:else if inProgress}
-            <div class="">loading</div>
+            <LoadingWheel />
         {:else}
-            <div class="progress-error">{progressError}</div>
+            <div class="font-exo text-lg italic">{progressError}</div>
         {/if}
     </div>
 </main>

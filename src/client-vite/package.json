@@ -20,5 +20,11 @@
     "tslib": "^2.6.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "@fontsource-variable/exo": "^5.0.9",
+    "@fontsource/homenaje": "^5.0.8",
+    "@fontsource/marcellus": "^5.0.8",
+    "@rive-app/canvas": "^2.3.0"
   }
 }

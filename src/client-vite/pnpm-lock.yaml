@@ -4,6 +4,20 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+dependencies:
+  '@fontsource-variable/exo':
+    specifier: ^5.0.9
+    version: 5.0.9
+  '@fontsource/homenaje':
+    specifier: ^5.0.8
+    version: 5.0.8
+  '@fontsource/marcellus':
+    specifier: ^5.0.8
+    version: 5.0.8
+  '@rive-app/canvas':
+    specifier: ^2.3.0
+    version: 2.3.0
+
 devDependencies:
   '@sveltejs/vite-plugin-svelte':
     specifier: ^2.4.2
@@ -249,6 +263,18 @@ packages:
     dev: true
     optional: true
 
+  /@fontsource-variable/exo@5.0.9:
+    resolution: {integrity: sha512-5pgtoZ93IaAlExLDlxC6pFubhqJeS2e0ZADvNUMF3fIptZyFijWCukiMt8eOU2pPZGAOjxhCM+CUIQcQsR6NnQ==}
+    dev: false
+
+  /@fontsource/homenaje@5.0.8:
+    resolution: {integrity: sha512-Bqlp42u6WJFc01vXaXbIFMxhkyFLRL+f8eyzKqDf6Puoc2Hb4Df/VYrJ42seJjwGZjT2rS73TJ3CvVzPDClykQ==}
+    dev: false
+
+  /@fontsource/marcellus@5.0.8:
+    resolution: {integrity: sha512-EnhDap99ysUyk23gkj9Wx3UXFr2flGloU0i0wQjdqgzVQv+Zrn8OtdeDvi9Rqsopw0tPxdomZhcyIoe0QXI8tg==}
+    dev: false
+
   /@jridgewell/gen-mapping@0.3.3:
     resolution: {integrity: sha512-HLhSWOLRi875zjjMG/r+Nv0oCW8umGb0BgEhyX3dDX3egwZtB8PqLnjz3yedt8R5StBrzcg4aBpnh8UA9D1BoQ==}
     engines: {node: '>=6.0.0'}
@@ -299,6 +325,10 @@ packages:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.15.0
     dev: true
+
+  /@rive-app/canvas@2.3.0:
+    resolution: {integrity: sha512-9snlFiBdNxCQ3rzGm+L2xCgAbtZvpx759Bi+FrQW2a3lKk4YzXZY3mAMNCWmal7tIYxzLSAV18VzamOn2lsRJQ==}
+    dev: false
 
   /@sveltejs/vite-plugin-svelte-inspector@1.0.4(@sveltejs/vite-plugin-svelte@2.4.2)(svelte@4.0.5)(vite@4.4.5):
     resolution: {integrity: sha512-zjiuZ3yydBtwpF3bj0kQNV0YXe+iKE545QGZVTaylW3eAzFr+pJ/cwK8lZEaRp4JtaJXhD5DyWAV4AxLh6DgaQ==}
