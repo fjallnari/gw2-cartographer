@@ -8,8 +8,6 @@ RUN yarn install --frozen-lockfile
 
 COPY . .
 
-# Expose port 8080 for the svelte dev and 35729 for rollup's live reload
-EXPOSE 35729
-EXPOSE 8080
+EXPOSE 5173
 
 CMD yarn dev

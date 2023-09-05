@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + Svelte + TS</title>
+    <title>GW2 Cartographer</title>
   </head>
   <body>
     <div id="app" class="h-full w-full"></div>
@@ -23,16 +23,20 @@
 	}
 	body {
 		height: 100%;
-    margin: 0;
-    background-image: url('src/assets/bg-haikei.svg');
-    background-size: cover;
-		background: hsla(204, 31%, 10%, 1);
+		margin: 0;
+		background: rgb(37,53,65);
+		background: -moz-linear-gradient(135deg, rgba(37,53,65,1) 0%, rgba(26,33,38,1) 100%);
+		background: -webkit-linear-gradient(135deg, rgba(37,53,65,1) 0%, rgba(26,33,38,1) 100%);
+		background: linear-gradient(135deg, rgba(37,53,65,1) 0%, rgba(26,33,38,1) 100%);
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#253541",endColorstr="#1a2126",GradientType=1);
+
+		/* background: hsla(204, 31%, 10%, 1);
 		background: linear-gradient(135deg, hsla(204, 31%, 10%, 1) 20%, hsla(193, 23%, 12%, 1) 80%);
 		background: -moz-linear-gradient(135deg, hsla(204, 31%, 10%, 1) 20%, hsla(193, 23%, 12%, 1) 80%);
 		background: -webkit-linear-gradient(135deg, hsla(204, 31%, 10%, 1) 20%, hsla(193, 23%, 12%, 1) 80%);
-		filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#111A20", endColorstr="#172225", GradientType=1 );
+		filter: progid: DXImageTransform.Microsoft.gradient( startColorstr="#111A20", endColorstr="#172225", GradientType=1 ); */
 		background-repeat: no-repeat;
-    background-attachment: fixed;
+		background-attachment: fixed;
 	}
 	code {
 		font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,

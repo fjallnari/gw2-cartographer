@@ -16,11 +16,10 @@
     onMount(() => {
         interval = setInterval(() => {
             loadingMessage = randomizeLoadingMessage();
-            console.log(loadingMessage);
         }, 3000);
 
         riveInstance = new Rive({
-            src: "../src/assets/load_circle.riv",
+            src: "load_circle.riv",
             canvas: canvas,
             stateMachines: "load",
             autoplay: true,

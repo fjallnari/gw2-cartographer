@@ -26,8 +26,7 @@ services:
             dockerfile: dev.Dockerfile
         user: node
         ports: 
-            - "8080:8080"
-            - "35729:35729"
+            - "5173:5173"
         container_name: cartographer-client
         volumes:
             - .:/app

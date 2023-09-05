@@ -1,39 +1,30 @@
 {
-  "name": "svelte-app",
-  "version": "1.0.0",
+  "name": "client-vite",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "build": "rollup -c",
-    "build-prod": "yarn install --frozen-lockfile && yarn build",
-    "dev": "rollup -c -w",
-    "start": "sirv public --no-clear",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "^17.0.0",
-    "@rollup/plugin-node-resolve": "^11.0.0",
-    "@rollup/plugin-typescript": "^8.0.0",
-    "@tsconfig/svelte": "^2.0.0",
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "@tsconfig/svelte": "^5.0.0",
     "autoprefixer": "^10.4.15",
-    "rollup": "^2.3.4",
-    "rollup-plugin-css-only": "^3.1.0",
-    "rollup-plugin-dev": "^2.0.2",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0",
-    "sass": "^1.47.0",
-    "svelte": "^3.0.0",
-    "svelte-check": "^2.0.0",
-    "svelte-preprocess": "^4.10.1",
+    "postcss": "^8.4.29",
+    "svelte": "^4.0.5",
+    "svelte-check": "^3.4.6",
     "tailwindcss": "^3.3.3",
-    "tslib": "^2.0.0",
-    "typescript": "^4.0.0"
+    "tslib": "^2.6.0",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5"
   },
   "dependencies": {
-    "@iconify/svelte": "^3.1.0",
-    "postcss": "^8.4.29",
-    "sirv-cli": "^2.0.0",
-    "svelecte": "^4.0.0-alpha.7",
-    "svelte-spa-router": "^3.2.0"
+    "@fontsource-variable/exo": "^5.0.9",
+    "@fontsource/homenaje": "^5.0.8",
+    "@fontsource/marcellus": "^5.0.8",
+    "@rive-app/canvas": "^2.3.0"
   }
 }

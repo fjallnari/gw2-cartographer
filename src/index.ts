@@ -20,7 +20,7 @@ const main = async () => {
   const app = express();
 
   app.use(cors({
-    origin: 'http://localhost:5173'
+    origin: 'http://localhost:4000'
   }));
 
   app.get('/api/map-gen/', async (req, res) => {
@@ -51,14 +51,14 @@ const main = async () => {
     res.json(TYRIA_MAPS);
   });
 
-  app.use(express.static('src/client/public'));
+  app.use(express.static('src/client/dist'));
 
   app.use('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client/public', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client/dist', 'index.html'));
   });
 
   app.listen(port, () => {
-    console.log(`Server started on http://localhost:${port}/?#`);
+    console.log(`Server started on http://localhost:${port}`);
   });
 
 };
