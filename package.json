@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build-server": "tsc",
-    "build-client": "cd src/client && yarn build && cd ../..",
+    "build-client": "cd src/client && yarn install --frozen-lockfile && yarn build && cd ../..",
     "server-dev": "ts-node-dev src/index.ts",
     "run-stack-dev": "yarn build-client && yarn server-dev",
     "build-prod": "yarn install --frozen-lockfile && yarn build-client && yarn build-server",
