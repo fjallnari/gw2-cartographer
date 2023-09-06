@@ -12,8 +12,6 @@ COPY . .
 
 RUN yarn build-client
 
-ADD /src/client/dist /app/dist/client
-
 RUN yarn build-server
 
 CMD yarn start-prod

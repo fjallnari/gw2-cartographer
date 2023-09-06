@@ -7,4 +7,8 @@ export default defineConfig({
     svelte()
   ],
   assetsInclude: ['**/*.riv'],
+  build: {
+    outDir: '../../dist/client',
+    emptyOutDir: true,
+  }
 })
