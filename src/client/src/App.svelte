@@ -26,11 +26,10 @@
     ];
 
     let genMode = genModes[0];
-    let API_URL = "http://localhost:4000";
 
     async function getMaps() {
         try {
-            const returnValue = await fetch(`${API_URL}/api/maps`);
+            const returnValue = await fetch(`/api/maps`);
             const response = await returnValue.json() as TyriaMap[];
             const sortedMaps = response.sort((a, b) => a.name > b.name ? 1 : -1)
             mapToRender = sortedMaps[0];
@@ -46,7 +45,7 @@
         inProgress = true;
         
         try {
-            const returnValue = await fetch(`${API_URL}/api/map-gen/?mode=${genMode.id}&name=${mapToRender.name}`);
+            const returnValue = await fetch(`/api/map-gen/?mode=${genMode.id}&name=${mapToRender.name}`);
             const response = await returnValue.json();
             renderedMapURL = response.data[0].mapURL;
         } catch (err) {
