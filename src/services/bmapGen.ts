@@ -1,4 +1,4 @@
-import { Canvas, createCanvas, loadImage, NodeCanvasRenderingContext2D } from "canvas";
+import { Canvas, createCanvas, loadImage, CanvasRenderingContext2D } from "canvas";
 import TYRIA_MAPS from "../data/TYRIA_MAPS";
 import { MapDimensions } from "../interfaces/MapDimensions";
 import MapInfo from "../interfaces/MapInfo";
@@ -10,7 +10,7 @@ export default class BMapGen {
     mapInfo: MapInfo;
     mapDims: MapDimensions;
     canvas: Canvas;
-    context: NodeCanvasRenderingContext2D;
+    context: CanvasRenderingContext2D;
     tileSize = 256;
 
     constructor(id: number) {
