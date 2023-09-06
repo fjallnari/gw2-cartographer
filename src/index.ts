@@ -51,10 +51,10 @@ const main = async () => {
     res.json(TYRIA_MAPS);
   });
 
-  app.use(express.static('src/client/dist'));
+  app.use(express.static('dist/client'));
 
   app.use('/', (req, res) => {
-    res.sendFile(path.resolve(__dirname, 'client/dist', 'index.html'));
+    res.sendFile(path.resolve(__dirname, 'client', 'index.html'));
   });
 
   app.listen(port, () => {
