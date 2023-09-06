@@ -19,10 +19,6 @@ const port = process.env.PORT || 4000;
 const main = async () => {
   const app = express();
 
-  app.use(cors({
-    origin: 'http://localhost:4000'
-  }));
-
   app.get('/api/map-gen/', async (req, res) => {
     const mapName = req.query.name;
     const genMode = <string> req.query.mode;
