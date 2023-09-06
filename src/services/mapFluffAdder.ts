@@ -1,4 +1,4 @@
-import { Canvas, createCanvas, Image, loadImage, NodeCanvasRenderingContext2D } from "canvas";
+import { Canvas, createCanvas, Image, loadImage, CanvasRenderingContext2D } from "canvas";
 import { MAP_DETAILS } from "../data/MAP_DETAILS";
 import TYRIA_MAPS from "../data/TYRIA_MAPS";
 import FullMapInfo from "../interfaces/FullMapInfo";
@@ -6,7 +6,7 @@ import { MapDimensions } from "../interfaces/MapDimensions";
 import { mapDimensionsFromPoints, translatePointArray } from "../util/mapUtil";
 
 export default class MapFluffAdder {
-    context: NodeCanvasRenderingContext2D;
+    context: CanvasRenderingContext2D;
     canvas: Canvas;
     mapDimensions: MapDimensions;
     fontStyles: Record<string, string> = {
