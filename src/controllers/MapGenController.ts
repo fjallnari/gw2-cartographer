@@ -26,7 +26,7 @@ export default class MapGenController {
      * publicID can be used if you need exact id, e.g. different mode than the one which is being used
      */
     private getAssetInfoByPublicID = async (publicID: string = this.public_id): Promise<AssetInfo> => {
-        const response = await cloudinary.api.resources({max_results: 100});
+        const response = await cloudinary.api.resources({ max_results: 300});
         return response.resources.find((resource: AssetInfo) => resource.public_id === publicID);  
     }
 
@@ -49,9 +49,13 @@ export default class MapGenController {
     private async getBmapUrl() {
         // checks first if the image exists on our cloud
         const assetInfo = await this.getAssetInfoByPublicID(`gw2-maps/bmap/${this.mapID}`);
+
         if (assetInfo){
+            console.log("Bmap is cached on cloudinary, returning...");
             return assetInfo.secure_url;
         }
+
+        console.log("Bmap doesn't exist on cloudinary, generating...");
 
         // generate and upload it if it doesn't
         const canvas = await this.bmapGen.createBmap();
