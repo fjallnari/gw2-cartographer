@@ -24,9 +24,6 @@ export const mapDimensionsFromPoints = (cornerPoints: number[][]) => {
     return <Coordinates> {x: pointCoords.x - mapDims.upper_left.x, y: pointCoords.y - mapDims.upper_left.y};
 }
 
-/**
- * Just simple chaining of functions
-*/
 export const translatePointArray = (pointArray: number[], mapDimensions: MapDimensions) =>{
     return translateCoordinates(pointArrToCoordinates(pointArray), mapDimensions);
 }

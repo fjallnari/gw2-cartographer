@@ -3,7 +3,7 @@ import dotenv from "dotenv";
 import path from 'path';
 import MapGenController from "./controllers/MapGenController";
 import TYRIA_MAPS from "./data/TYRIA_MAPS";
-import cors from "cors";
+
 const cloudinary = require('cloudinary').v2;
 
 dotenv.config();

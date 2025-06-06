@@ -70,7 +70,6 @@ export default class MapFluffAdder {
             'hp': await loadImage('./public/hp.png'),
         }
 
-        // TODO: Refactor this to be more DRY    
         // first draws base map as background, then adds all the icons
         await loadImage(inputURL).then((baseMap: Image) => {
             this.context.drawImage(baseMap, 0, 0);
