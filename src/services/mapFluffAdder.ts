@@ -1,4 +1,4 @@
-import { Canvas, createCanvas, Image, loadImage, CanvasRenderingContext2D } from "canvas";
+import { Canvas, createCanvas, Image, loadImage, CanvasRenderingContext2D, registerFont } from "canvas";
 import { MAP_DETAILS } from "../data/MAP_DETAILS";
 import TYRIA_MAPS from "../data/TYRIA_MAPS";
 import FullMapInfo from "../interfaces/FullMapInfo";
@@ -25,7 +25,6 @@ export default class MapFluffAdder {
         this.map = MAP_DETAILS[mapID];
         console.log(Object.keys(MAP_DETAILS));
         console.log(TYRIA_MAPS.map( mapInfo => mapInfo.id));
-
     }
 
     /**

@@ -59,7 +59,7 @@ export default class MapGenController {
 
         // generate and upload it if it doesn't
         const canvas = await this.bmapGen.createBmap();
-        const buffer = canvas.toBuffer('image/jpeg');
+        const buffer = canvas.toBuffer('image/png');
         const uploadResponse = await this.uploadMapToCloud(buffer);
 
         return uploadResponse.secure_url;
@@ -72,7 +72,7 @@ export default class MapGenController {
         }
 
         const canvas = await this.mapFluffAdder.addFluffToMap(bmapURL, this.mode === 'fmap');
-        const buffer = canvas.toBuffer('image/jpeg');
+        const buffer = canvas.toBuffer('image/png');
         const uploadResponse = await this.uploadMapToCloud(buffer);
 
         return uploadResponse.secure_url;

@@ -50,6 +50,7 @@
             renderedMapURL = response.data[0].mapURL;
         } catch (err) {
             progressError = `Couldn't generate the ${genMode.id} of ${mapToRender.name}`;
+            console.error(err);
             renderedMapURL = undefined;
         }
         inProgress = false;

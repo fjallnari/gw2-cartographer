@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import path from 'path';
 import MapGenController from "./controllers/MapGenController";
 import TYRIA_MAPS from "./data/TYRIA_MAPS";
+import { registerFont } from "canvas";
 
 const cloudinary = require('cloudinary').v2;
 
@@ -18,6 +19,8 @@ const port = process.env.PORT || 4000;
 
 const main = async () => {
   const app = express();
+
+  registerFont('./public/Candara_Italic.ttf', { family: 'Candara' });
 
   app.get('/api/map-gen/', async (req, res) => {
     const mapName = req.query.name;
@@ -35,7 +38,8 @@ const main = async () => {
         });
       })
       .catch((err) => {
-        res.send({
+        console.log("Error generating map:", err);
+        res.status(500).send({
           success: false,
           data: []
         })

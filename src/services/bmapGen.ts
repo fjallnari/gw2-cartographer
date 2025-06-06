@@ -1,4 +1,4 @@
-import { Canvas, createCanvas, loadImage, CanvasRenderingContext2D } from "canvas";
+import { Canvas, createCanvas, loadImage, CanvasRenderingContext2D, registerFont } from "canvas";
 import TYRIA_MAPS from "../data/TYRIA_MAPS";
 import { MapDimensions } from "../interfaces/MapDimensions";
 import MapInfo from "../interfaces/MapInfo";
