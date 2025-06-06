@@ -1,10 +1,12 @@
-FROM node:22
+FROM node:22-alpine
 
 WORKDIR /app
 
 COPY package*.json ./
 
-RUN yarn install --frozen-lockfile
+RUN apk update && apk add build-base g++ cairo-dev pango-dev giflib-dev
+
+RUN yarn install 
 
 COPY . .
 
